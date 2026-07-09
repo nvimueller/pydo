@@ -1,7 +1,9 @@
-import sys
 from commands.parser import Parser
 
-
 tasks = []
-while sys.argv[0] != "exit":
-    parser = Parser.parse(sys.argv, tasks)
+line = input().split()
+command = line[0]
+
+while line[0] != "exit":
+    parser = Parser.parse(tasks, line)
+    line = input().split()

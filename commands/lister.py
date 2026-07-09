@@ -2,11 +2,9 @@ from dataclasses import dataclass
 
 @dataclass
 class Lister:
-    def list_tasks(tasks):
+    def list(tasks):
         for task in tasks:
-            number = 1
             print(
-                f"{number}. {task.text} | "
+                f"{task.text} | "
                 f"urgent: {str(task.is_urgent).lower()}"
             )
-            number = number + 1
