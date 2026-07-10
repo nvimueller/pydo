@@ -1,10 +1,11 @@
+from models.task import Task
 import csv
 from dataclasses import dataclass
 
 @dataclass
 class Reader:
     def read():
-        with open("tasks.csv", "r", newline="") as file:
+        with open("storage/tasks.csv", "r", newline="") as file:
             reader = csv.reader(file)
             next(reader)
             tasks = []

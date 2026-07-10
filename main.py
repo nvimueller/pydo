@@ -1,6 +1,7 @@
 from commands.parser import Parser
+from storage.reader import Reader
 
-tasks = []
+tasks = Reader.read()
 line = input().split()
 command = line[0]
 
