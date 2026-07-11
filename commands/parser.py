@@ -6,6 +6,7 @@ from dataclasses import dataclass
 from commands.lister import Lister
 from commands.completer import Completer
 
+
 @dataclass
 class Parser:
     def parse(tasks, line):
@@ -26,3 +27,5 @@ class Parser:
                 tasks = Reader.read()
                 lister = Lister.list(tasks)
                 print("---------------------")
+            case other:
+                print(f"{other} is an invalid command!")

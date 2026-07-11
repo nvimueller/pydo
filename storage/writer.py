@@ -1,6 +1,7 @@
 import csv
 from dataclasses import dataclass
 
+
 @dataclass
 class Writer:
     def write(tasks):

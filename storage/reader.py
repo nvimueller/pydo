@@ -2,6 +2,7 @@ from models.task import Task
 import csv
 from dataclasses import dataclass
 
+
 @dataclass
 class Reader:
     def read():
