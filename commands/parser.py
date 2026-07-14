@@ -1,3 +1,4 @@
+import argparse
 from models.task import Task
 from commands.adder import Adder
 from storage.writer import Writer
@@ -9,23 +10,27 @@ from commands.completer import Completer
 
 @dataclass
 class Parser:
-    def parse(tasks, line):
-        match line[0]:
+    def parse(tasks):
+        parser = argparse.ArgumentParser(prog="pydo")
+        subparsers = parser.add_subparsers(dest="command", required=True)
+        add_parser = subparsers.add_parser("add")
+        add_parser.add_argument("task")
+        list_parser = subparsers.add_parser("list")
+        done_parser = subparsers.add_parser("done")
+        done_parser.add_argument("id", type=int)
+
+        args = parser.parse_args()
+        match args.command:
             case "add":
-                if line[2] == "yes":
-                    task = Task(line[1], True)
-                if line[2] == "no":
-                    task = Task(line[1], False)
+                task = Task(args.task)
                 adder = Adder.add(tasks, task)
                 writer = Writer.write(tasks)
                 print("---------------------")
             case "done":
-                completer = Completer.complete(tasks, int(line[1]))
+                completer = Completer.complete(tasks, args.id)
                 writer = Writer.write(tasks)
                 print("---------------------")
             case "list":
                 tasks = Reader.read()
                 lister = Lister.list(tasks)
                 print("---------------------")
-            case other:
-                print(f"{other} is an invalid command!")

@@ -2,9 +2,4 @@ from commands.parser import Parser
 from storage.reader import Reader
 
 tasks = Reader.read()
-line = input().split()
-command = line[0]
-
-while line[0] != "exit":
-    parser = Parser.parse(tasks, line)
-    line = input().split()
+parser = Parser.parse(tasks)

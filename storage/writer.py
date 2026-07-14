@@ -7,7 +7,7 @@ class Writer:
     def write(tasks):
         with open("storage/tasks.csv", "w", newline="") as file:
             writer = csv.writer(file)
-            writer.writerow(["text", "is_urgent"])
+            writer.writerow(["text"])
             for task in tasks:
-                row = [str(task.text), str(task.is_urgent).lower()]
+                row = [str(task.text)]
                 writer.writerow(row)
