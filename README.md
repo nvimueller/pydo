@@ -3,17 +3,19 @@
 a tiny, zero-dependency todo list for your terminal
 
 ## install
-
-`git clone https://github.com/nvimueller/pydo.git
+```bash
+git clone https://github.com/nvimueller/pydo.git
 cd pydo
-pip install -e .`
+pip install -e .
+```
 
 ## usage
-
-`pydo add "write README"
+```bash
+pydo add "write README"
 pydo list
 pydo done 1
-pydo rename 2 "update README with examples"`
+pydo rename 2 "update README with examples"
+```
 
 ## commands
 
