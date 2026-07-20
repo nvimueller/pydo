@@ -1,6 +1,6 @@
 # pydo
 
-a tiny, zero-dependency todo list for your terminal
+a minimal python cli to-do list application
 
 ## install
 ```bash
@@ -9,17 +9,9 @@ cd pydo
 pip install -e .
 ```
 
-## usage
-```bash
-pydo add "write README"
-pydo list
-pydo done 1
-pydo rename 2 "update README with examples"
-```
-
 ## commands
 
-`pydo add "<task>"`              add a new task  
-`pydo list`                      show all tasks with indexes  
-`pydo done <index>`              mark a task as complete  
-`pydo rename <index> "<task>"`   edit a task  
+`pydo add "<task>"`              add a new task
+`pydo list`                      show all tasks with indexes
+`pydo done <index>`              mark a task as complete
+`pydo rename <index> "<task>"`   edit a task
