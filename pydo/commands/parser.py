@@ -1,13 +1,13 @@
 import argparse
 from datetime import date
-from models.task import Task
-from commands.adder import Adder
-from storage.writer import Writer
-from storage.reader import Reader
+from pydo.models.task import Task
 from dataclasses import dataclass
-from commands.lister import Lister
-from commands.renamer import Renamer
-from commands.completer import Completer
+from pydo.commands.adder import Adder
+from pydo.storage.writer import Writer
+from pydo.storage.reader import Reader
+from pydo.commands.lister import Lister
+from pydo.commands.renamer import Renamer
+from pydo.commands.completer import Completer
 
 
 @dataclass
@@ -39,11 +39,20 @@ class Parser:
                 adder = Adder.add(tasks, task)
                 writer = Writer.write(tasks)
             case "done":
-                completer = Completer.complete(tasks, args.done_index)
-                writer = Writer.write(tasks)
+                if tasks[args.done_index - 1] and args.done_index != 0:
+                    completer = Completer.complete(tasks, args.done_index)
+                    writer = Writer.write(tasks)
+                else:
+                    print("your index is out of bounds")
             case "list":
                 tasks = Reader.read()
-                lister = Lister.list(tasks)
+                if tasks:
+                    lister = Lister.list(tasks)
+                else:
+                    print("there are no tasks to be listed")
             case "rename":
-                renamer = Renamer.rename(tasks, args.rename_index, args.new_name)
-                writer = Writer.write(tasks)
+                if tasks[args.rename_index - 1] and args.rename_index != 0:
+                    renamer = Renamer.rename(tasks, args.rename_index, args.new_name)
+                    writer = Writer.write(tasks)
+                else:
+                    print("your index is out of bounds")
