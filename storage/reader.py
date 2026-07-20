@@ -1,5 +1,5 @@
-from models.task import Task
 import csv
+from models.task import Task
 from dataclasses import dataclass
 
 
