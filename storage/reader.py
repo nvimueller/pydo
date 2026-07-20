@@ -11,6 +11,6 @@ class Reader:
             next(reader)
             tasks = []
             for row in reader:
-                task = Task(row[0])
+                task = Task(row[0], row[1])
                 tasks.append(task)
             return tasks

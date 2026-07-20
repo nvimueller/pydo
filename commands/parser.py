@@ -1,4 +1,5 @@
 import argparse
+from datetime import date
 from models.task import Task
 from commands.adder import Adder
 from storage.writer import Writer
@@ -14,15 +15,15 @@ class Parser:
     def setup_argparse():
         parser = argparse.ArgumentParser(prog="pydo")
         subparsers = parser.add_subparsers(dest="command", required=True)
-        
+
         add_parser = subparsers.add_parser("add")
         add_parser.add_argument("task", type=str)
-        
+
         list_parser = subparsers.add_parser("list")
-        
+
         done_parser = subparsers.add_parser("done")
         done_parser.add_argument("done_index", type=int)
-        
+
         rename_parser = subparsers.add_parser("rename")
         rename_parser.add_argument("rename_index", type=int)
         rename_parser.add_argument("new_name", type=str)
@@ -34,7 +35,7 @@ class Parser:
         args = parser.parse_args()
         match args.command:
             case "add":
-                task = Task(args.task)
+                task = Task(args.task, date.today())
                 adder = Adder.add(tasks, task)
                 writer = Writer.write(tasks)
             case "done":
