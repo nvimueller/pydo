@@ -6,5 +6,6 @@ def main():
     tasks = Reader.read()
     parser = Parser.parse(tasks)
 
+
 if __name__ == "__main__":
     main()

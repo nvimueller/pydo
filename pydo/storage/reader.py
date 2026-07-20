@@ -1,9 +1,7 @@
-from importlib.resources import files
-
-
 import csv
 from pydo.models.task import Task
 from dataclasses import dataclass
+from importlib.resources import files
 
 
 @dataclass

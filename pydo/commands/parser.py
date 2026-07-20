@@ -39,7 +39,7 @@ class Parser:
                 adder = Adder.add(tasks, task)
                 writer = Writer.write(tasks)
             case "done":
-                if tasks[args.done_index - 1] and args.done_index != 0:
+                if tasks and tasks[args.done_index - 1] and args.done_index != 0:
                     completer = Completer.complete(tasks, args.done_index)
                     writer = Writer.write(tasks)
                 else:
@@ -51,7 +51,7 @@ class Parser:
                 else:
                     print("there are no tasks to be listed")
             case "rename":
-                if tasks[args.rename_index - 1] and args.rename_index != 0:
+                if tasks and tasks[args.rename_index - 1] and args.rename_index != 0:
                     renamer = Renamer.rename(tasks, args.rename_index, args.new_name)
                     writer = Writer.write(tasks)
                 else:
