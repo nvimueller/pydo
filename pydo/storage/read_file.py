@@ -1,12 +1,12 @@
 import csv
-from pydo.models.task import Task
-from dataclasses import dataclass
+import pydo.models.task
 from importlib.resources import files
 
 
 @dataclass
 class Reader:
     def read():
+        # write something to replace this finding
         tasks_path = files("pydo.storage").joinpath("tasks.csv")
         with tasks_path.open("r", newline="") as file:
             reader = csv.reader(file)
