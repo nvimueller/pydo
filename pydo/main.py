@@ -1,11 +1,5 @@
-from pydo.commands.parser import Parser
-from pydo.storage.reader import Reader
-
-
 def main():
-    tasks = Reader.read()
-    parser = Parser.parse(tasks)
+    pass
 
 
-if __name__ == "__main__":
-    main()
+main()

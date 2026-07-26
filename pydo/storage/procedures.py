@@ -14,7 +14,7 @@ def save_task_list(task_list):
 def write_task_list(task_list, file_writer):
     writer.writerow(["text", "addition_date"])
     for task in task_list:
-        row = [str(task.description), str(task.addition_date)]
+        row = [task.description, task.addition_date]
         file_writer.writerow(row)
 
 
@@ -44,12 +44,12 @@ def close_file(file):
     file.close()
 
 
-def get_file_reader(file):
-    return csv.reader(file)
-
-
 def get_file_writer(file):
     return csv.writer(file)
+
+
+def get_file_reader(file):
+    return csv.reader(file)
 
 
 def get_file_path():
