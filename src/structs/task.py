@@ -3,5 +3,5 @@ from dataclasses import dataclass
 
 @dataclass
 class Task:
-    text: str
-    addition_date: str
+    desc: str
+    add_date: str
