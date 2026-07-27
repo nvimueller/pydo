@@ -1,5 +1,5 @@
-from pydo.storage.procedures import get_tasks
-from pydo.parser.procedures import match
+from src.storage.procedures import get_tasks
+from src.parser.procedures import match
 
 
 def main():
