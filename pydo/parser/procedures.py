@@ -11,7 +11,9 @@ from pydo.commands.procedures import delete
 
 def match(tasks):
     argv = split()
-    command = argv[0]
+    if argv:
+        command = argv[0]
+    else: command = ""
     if command == "add":
         match_add(argv, tasks)
     elif command == "display":
@@ -25,7 +27,7 @@ def match(tasks):
 
 
 def match_add(argv, tasks):
-    is_right_len = not argv[1:]
+    is_right_len = not argv[2:]
     task_desc = argv[1]
     if task_desc and is_right_len:
         convert_add(argv, tasks)
@@ -50,7 +52,7 @@ def is_natural(index):
 
 
 def match_delete(argv, tasks):
-    is_right_len: not argv[1:]
+    is_right_len = not argv[2:]
     index = argv[1]
     is_index_valid = index and is_natural(index)
     if is_index_valid and is_right_len:
@@ -60,13 +62,13 @@ def match_delete(argv, tasks):
 
 
 def convert_delete(argv, tasks):
-    index = argv[1]
+    index = int(argv[1])
     delete(index, tasks)
     save(tasks)
 
 
 def match_rename(argv, tasks):
-    is_right_len = not argv[2:]
+    is_right_len = not argv[3:]
     desc = argv[2]
     index = argv[1]
     is_index_valid = index and is_natural(index)
@@ -77,14 +79,14 @@ def match_rename(argv, tasks):
 
 
 def convert_rename(argv, tasks):
-    index = argv[1]
+    index = int(argv[1])
     desc = argv[2]
     rename(index, desc, tasks)
     save(tasks)
 
 
 def match_display(argv, tasks):
-    is_right_len = not argv[0:]
+    is_right_len = not argv[1:]
     if is_right_len:
         convert_display(tasks)
     else:
@@ -96,7 +98,9 @@ def convert_display(tasks):
 
 
 def split():
-    return sys.argv[1:]
+    if len(sys.argv) > 1:
+        return sys.argv[1:]
+    else: return list()
 
 
 def invalid_msg():
