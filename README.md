@@ -12,6 +12,6 @@ pip install -e .
 ## commands
 
 `pydo add "<task>"`              add a new task   
-`pydo list`                      show all tasks with indexes   
-`pydo done <index>`              mark a task as complete   
+`pydo display`                   show all tasks with indexes   
+`pydo delete <index>`            mark a task as complete   
 `pydo rename <index> "<task>"`   edit a task   
