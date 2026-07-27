@@ -1,12 +1,12 @@
 import sys
 from datetime import date
-from pydo.structs.task import Task
-from pydo.storage.procedures import save
-from pydo.storage.procedures import get_tasks
-from pydo.commands.procedures import add
-from pydo.commands.procedures import display
-from pydo.commands.procedures import rename
-from pydo.commands.procedures import delete
+from src.structs.task import Task
+from src.storage.procedures import save
+from src.storage.procedures import get_tasks
+from src.commands.procedures import add
+from src.commands.procedures import display
+from src.commands.procedures import rename
+from src.commands.procedures import delete
 
 
 def match(tasks):

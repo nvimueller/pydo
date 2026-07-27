@@ -1,5 +1,5 @@
 import csv
-from pydo.structs.task import Task
+from src.structs.task import Task
 from importlib.resources import files
 
 
@@ -45,4 +45,4 @@ def get_reader(file):
 
 
 def get_path():
-    return files("pydo.storage").joinpath("tasks.csv")
+    return files("src.storage").joinpath("tasks.csv")
