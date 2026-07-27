@@ -1,56 +1,48 @@
 import csv
-from pydo.structs.task import task
+from pydo.structs.task import Task
 from importlib.resources import files
 
 
-def save_task_list(task_list):
-    file_path = get_file_path()
-    file = open_file(file_path, "w")
-    file_writer = get_file_writer(file)
-    write_task_list(task_list, file_writer)
-    close_file(file)
-
-
-def write_task_list(task_list, file_writer):
-    writer.writerow(["text", "addition_date"])
-    for task in task_list:
-        row = [task.description, task.addition_date]
-        file_writer.writerow(row)
-
-
-def get_task_list():
-    file_path = get_file_path()
-    file = open_file(file_path, "r")
-    file_reader = get_file_reader(file)
-    task_list = read_task_list(file_reader)
-    close_file(file)
-    return task_list
-
-
-def read_task_list(file_reader):
-    next(reader)  # skip header
-    task_list = []
-    for row in file_reader:
-        new_task = task(row[0], row[1])
-        task_list.append(new_task)
-    return task_list
-
-
-def open_file(file_path, mode):
-    return open(file_path, mode)
-
-
-def close_file(file):
+def save(tasks):
+    path = get_path()
+    file = open(path, "w")
+    writer = get_writer(file)
+    write(tasks, writer)
     file.close()
 
 
-def get_file_writer(file):
+def write(tasks, writer):
+    writer.writerow(["desc", "add_date"])
+    for task in tasks:
+        row = [task.desc, task.add_date]
+        writer.writerow(row)
+
+
+def get_tasks():
+    path = get_path()
+    file = open(path, "r")
+    reader = get_reader(file)
+    tasks = read(reader)
+    file.close()
+    return tasks
+
+
+def read(reader):
+    next(reader, None)  # skip header
+    tasks = []
+    for row in reader:
+        task = Task(row[0], row[1])
+        tasks.append(task)
+    return tasks
+
+
+def get_writer(file):
     return csv.writer(file)
 
 
-def get_file_reader(file):
+def get_reader(file):
     return csv.reader(file)
 
 
-def get_file_path():
+def get_path():
     return files("pydo.storage").joinpath("tasks.csv")

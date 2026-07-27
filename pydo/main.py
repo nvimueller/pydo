@@ -1,5 +1,11 @@
+from pydo.storage.procedures import get_tasks
+from pydo.parser.procedures import match
+
+
 def main():
-    pass
+    tasks = get_tasks()
+    match(tasks)
 
 
-main()
+if "__name__" == "__main__":
+    main()

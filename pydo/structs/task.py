@@ -2,6 +2,6 @@ from dataclasses import dataclass
 
 
 @dataclass
-class task:
-    description: str
-    addition_date: str
+class Task:
+    desc: str
+    add_date: str
