@@ -4,9 +4,7 @@ a minimal python cli to-do list application
 
 ## install
 ```bash
-git clone https://github.com/nvimueller/pydo.git
-cd pydo
-pip install -e .
+pipx install git+https://github.com/nvimueller/pydo.git
 ```
 
 ## commands
